@@ -62,7 +62,7 @@ def home(request):
 	orders = Order.objects.all()
 	customers = Customer.objects.all()
 
-	total_customers = customers.count()
+	# total_customers = customers.count()
 
 	total_orders = orders.count()
 	delivered = orders.filter(status='Delivered').count()
@@ -73,7 +73,8 @@ def home(request):
 	'pending':pending }
 
 	return render(request, 'accounts/dashboard.html', context)
-
+	
+@login_required(login_url='login')
 def products(request):
 	products = Product.objects.all()
 
